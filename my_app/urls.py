@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from blog.views import bloglist
 
 urlpatterns = [
     path('', views.first_view, name='first'),

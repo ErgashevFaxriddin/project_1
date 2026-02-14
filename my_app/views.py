@@ -1,9 +1,11 @@
 from django.http import HttpResponse
 
+
 def first_view(request):
     html = f"""
     <h1>Welcome books world!</h1>
     <h2>Main</h2>
+    <a href="blog/"> blog >> </a><br> 
     <a href="second/"> second page >> </a><br>
     <a href="pages/Muqaddima/"> Muqaddima </a><br>
     <a href="pages/Ilm%20olish%20sirlari/"> Ilm olish sirlari </a><br>
