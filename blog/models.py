@@ -4,7 +4,8 @@ from django.db import models
 class Author(models.Model):
     name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100, blank=True, null=True)
-    age = models.SmallIntegerField()
+    age = models.SmallIntegerField(blank=True, null=True)
+    link = models.URLField(null=True)
 
     def __str__(self):
         return self.name.title() #admin panelda foydalanuvchi ismi bilan korinish uchun
