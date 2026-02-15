@@ -1,3 +1,5 @@
+from django.utils import timezone
+
 from django.db import models
 
 # Create your models here.
@@ -23,7 +25,8 @@ class Book(models.Model):
     author = models.ForeignKey(
         Author,     #Author modeliga ForeignKey
         null=True,  #DBda NULL bo‘lishi mumkin
-        on_delete=models.SET_NULL #agar author o'chirilsa, author maydoni NULL bo'ladi on_delete=models.CASCADE #agar author o'chib ketsa book ha o'chib ketadi
+        on_delete=models.SET_NULL #agar author o'chirilsa, author maydoni NULL bo'ladi on_delete=models.CASCADE
+                                  # #agar author o'chib ketsa book ha o'chib ketadi
         )
     genre = models.ForeignKey(Genre,
         null=True,
@@ -33,3 +36,13 @@ class Book(models.Model):
     def __str__(self):
         return self.name.title() #admin panelda foydalanuvchi ismi bilan korinish uchun
 
+class Post(models.Model):
+    title = models.CharField(max_length=250)
+    content = models.TextField()
+    author = models.ForeignKey(Author, null=True, on_delete=models.CASCADE)
+    publish = models.DateTimeField(default=timezone.now)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title #admin panelda foydalanuvchi ismi bilan korinish uchun
