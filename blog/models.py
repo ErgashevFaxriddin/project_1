@@ -1,6 +1,8 @@
 from django.utils import timezone
-
+from django.utils.text import slugify
 from django.db import models
+from django.utils.text import slugify
+
 
 # Create your models here.
 class Author(models.Model):
@@ -38,6 +40,7 @@ class Book(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True) #URL’ni o‘qilishi oson qilish uchun, , Masalan: https://mysite.com/blog/my-first-post → my-first-post bu slug.
     content = models.TextField()
     author = models.ForeignKey(Author, null=True, on_delete=models.CASCADE)
     publish = models.DateTimeField(default=timezone.now)
@@ -46,3 +49,8 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title #admin panelda foydalanuvchi ismi bilan korinish uchun
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
