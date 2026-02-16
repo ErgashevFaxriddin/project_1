@@ -1,11 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Post
 
 def bloglist(request):
-    html = f"""
-    <h1>Blog page</h1><br>
-    <h2>second</h2>
-
-    <a href="/"> << First page </a>
-    """
-    return HttpResponse(html)
+    posts = Post.objects.all()
+    post_list = ""
+    for post in posts:
+        post_list += f"<li>{post}</li>"
+    return HttpResponse(f"<ul>{post_list}</ul>")
