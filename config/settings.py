@@ -13,10 +13,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
-    'my_app',
-    'orm_app',
-    # Add your apps here AFTER you create them
+    # 'blog',
+    # 'my_app',
+    # 'orm_app',
 ]
 
 MIDDLEWARE = [
