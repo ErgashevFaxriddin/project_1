@@ -34,6 +34,7 @@ def pages(request, page):
         </p>
         <a href="/"> << First page </a>
         """
+
     elif page == 'Ilm olish sirlari':
         html = f"""
         <h1>{page}</h1>
@@ -44,6 +45,7 @@ def pages(request, page):
         </p>
         <a href="/"> << First page </a>
         """
+
     elif page == 'Savdogar sahobalar':
         html = f"""
         <h1>{page}</h1>
@@ -52,6 +54,7 @@ def pages(request, page):
         </p>
         <a href="/"> << First page </a>
         """
+
     elif page == 'Ulamolar nazdida vaqtning qadri':
         html = f"""
         <h1>{page}</h1>
@@ -60,10 +63,22 @@ def pages(request, page):
         </p>
         <a href="/"> << First page </a>
         """
+
+    # elif  page == 'blog':
+    #     html = f"""
+    #     <h1>{page}</h1>
+    #     <p>
+    #     A blog post is an individual, regularly updated article or entry published on a blog (a website) that often features an informal, conversational style to inform, entertain, or share expertise on a specific subject. They are crucial for businesses to build trust, drive web traffic, and improve SEO.
+    #     Here is a comprehensive guide to crafting an effective blog post, covering structure, best practices, and steps to follow.
+    #     <p>
+    #     <a href="/"> << FIRST PAGE </a>
+    #     """
+
     else:
-        html = f"""
-        <h1>Page {page}</h1>
-        <h2>Unit {page}</h2>
-        <a href="/"> << First page </a>
-        """
+        pass
+    #     html = f"""
+    #     <h1>Page {page}</h1>
+    #     <h2>Unit {page}</h2>
+    #     <a href="/"> << First page </a>
+    #     """
     return HttpResponse(html)

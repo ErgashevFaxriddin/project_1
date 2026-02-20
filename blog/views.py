@@ -7,4 +7,12 @@ def bloglist(request):
     post_list = ""
     for post in posts:
         post_list += f"<li>{post}</li>"
-    return HttpResponse(f"<ul>{post_list}</ul>")
+
+    html = f"""
+    <h1>BLOG LIST</h1>
+    <ul>
+    {post_list}
+    </ul>
+    <a href='/'> << FIRST PAGE </a>
+    """
+    return HttpResponse(html)
